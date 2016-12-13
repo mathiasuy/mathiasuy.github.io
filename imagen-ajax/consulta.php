@@ -28,7 +28,7 @@
   while($row = mysql_fetch_array($sql)){
       $doc = $row["documento"];
     echo "      <tr>";
-    echo "          <td>".$row['nombre']."</td>";
+    echo "          <td><b>".$row['nombre']."</b></td>";
     echo "          <td>".$doc."</td>";
     echo "          <td>".$row['email']."</td>";
 
