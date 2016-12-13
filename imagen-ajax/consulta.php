@@ -20,31 +20,35 @@
             <th>Documento</th>
             <th>Email</th>
             <th>Foto</th>
+            <th>Borrar</th>
         </tr>
     </thead>
     <tbody style="background-color: grey; color: black;">
 <?php
   while($row = mysql_fetch_array($sql)){
+      $doc = $row["documento"];
     echo "      <tr>";
     echo "          <td>".$row['nombre']."</td>";
-    echo "          <td>".$row['documento']."</td>";
+    echo "          <td>".$doc."</td>";
     echo "          <td>".$row['email']."</td>";
 
-    if (file_exists('imagenes/'.$row['documento'].'.jpg')){
-        echo '          <td ><img src="imagenes/'.$row['documento'].'.jpg"></img>'."</td>";
-    }  else if (file_exists('imagenes/'.$row['documento'].'.png')){
-        echo '          <td><img src="imagenes/'.$row['documento'].'.png"></img>'."</td>";
-    }  else if (file_exists('imagenes/'.$row['documento'].'.jpeg')){
-        echo '          <td><img src="imagenes/'.$row['documento'].'.jpeg"></img>'."</td>";
-    }  else if (file_exists('imagenes/'.$row['documento'].'.gif')){
-        echo '          <td><img src="imagenes/'.$row['documento'].'.gif"></img>'."</td>";
+    if (file_exists('imagenes/'.$doc.'.jpg')){
+        echo '          <td ><img src="imagenes/'.$doc.'.jpg"></img>'."</td>";
+    }  else if (file_exists('imagenes/'.$doc.'.png')){
+        echo '          <td><img src="imagenes/'.$doc.'.png"></img>'."</td>";
+    }  else if (file_exists('imagenes/'.$doc.'.jpeg')){
+        echo '          <td><img src="imagenes/'.$doc.'.jpeg"></img>'."</td>";
+    }  else if (file_exists('imagenes/'.$doc.'.gif')){
+        echo '          <td><img src="imagenes/'.$doc.'.gif"></img>'."</td>";
     } else{
         echo '          <td>Sin foto'."</td>";
     }
+    echo "          <td>".'<i class="material-icons prefix" onclick="del('.$doc.')">delete</i></td>';    
     echo "      </tr>";
   }
   
   mysql_free_result($sql);
+  mysql_close($con);
 ?>
     </tbody>
 </table>
