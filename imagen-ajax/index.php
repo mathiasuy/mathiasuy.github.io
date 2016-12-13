@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="dist/jquery.validate.js" ></script>
+     <!--el siguiente es para evitar errores en validate al mostrar la imagen:--> 
+    <script type="text/javascript" src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>       
+    <script type="text/javascript" src="js/ajax.js" ></script>
+    <script type="text/javascript" src="js/validacion.js"></script>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script type="text/javascript" src="js/mostrar-imagen.js"></script>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <!--Compiled and minified CSS--> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+     <!--Compiled and minified JavaScript--> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>      
+     <!--Latest compiled and minified CSS--> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+     <!--Optional theme--> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+     <!--Latest compiled and minified JavaScript--> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>      
+ </head>
+ <body>
+     
+     
+     
+     
+       <div class="container">
+        <div class="row">            
+          <div class="col s12">
+               <div class="row">
+            
+            <form  id="registro" name="registro" enctype="multipart/form-data">
+                <h2>Registro:</h2>
+                <label class="label label-danger invalid" for="nombre"></label>                
+                <div class="input-field">
+                  
+                   <i class="material-icons prefix">account_circle</i>
+                  <input type="text" name="nombre" id="nombre" data-error="wrong"/>
+                  <label for="nombre">Nombre</label>
+                </div>
+
+                <label for="documento" class="label label-danger invalid"></label>
+                <div class="input-field">
+                  <i class="material-icons prefix">assignment</i>
+                  <label for="documento">Documento</label>
+                  <input type="text" name="documento" id="documento" />
+                </div>
+
+                
+                <label for="email" class="label label-danger invalid"></label>
+                <div class="input-field">
+                  <i class="material-icons prefix">email</i>
+                  <label for="email"  data-error="wrong" data-success="right">Email</label>
+                  <input type="email" name="email" id="email"  class="validate"/>
+                </div>
+
+                <label for="password" class="label label-danger invalid"></label>
+                <div class="input-field">
+                  <i class="material-icons prefix">lock</i>
+                  <label for="password">Password</label>
+                  <input type="password" name="password" id="password" />
+                </div>
+
+                <label for="file" class="label label-danger invalid"></label>
+
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>File</span>
+        <input type="file"  name="file" id="file">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text"  name="file" id="file">
+      </div>
+    </div>
+
+                <div class="container" align="center" id="image"></div>
+                <div id="respuesta"></div>
+                <button type="submit" id="procesar" name="Submit" value="Grabar" >Registrar</button>
+                <div align="center" id="loading" hidden="true"><img src="css/loading.gif"><img></div>
+                <br><br>
+                <div id="resultado" ><?php include('consulta.php');?></div>
+              </form>
+               </div>
+          </div>
+            
+        </div>
+           <div align="right">© Mathias Battistella - 2016<br><br></div>      
+      </div>
+     
+ </body>
+</html>
