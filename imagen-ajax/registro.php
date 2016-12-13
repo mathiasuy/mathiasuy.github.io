@@ -32,6 +32,7 @@ if ($sql==0){
         
 }
 mysql_free_result($consulta);
+mysql_close($con);
 include('consulta.php');
     
 
