@@ -18,6 +18,8 @@ if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
 	return xmlhttp;
 }
 
+
+
 //Función para recoger los datos del formulario y enviarlos por post  
 function enviarDatos(){
  
@@ -51,6 +53,24 @@ function enviarDatos(){
 	ajax.send("nombre="+nombre+"&documento="+documento+"&email="+email+"&password="+password)
 }
  
+function del(doc){
+      divResultado = document.getElementById('resultado');
+    ajax=objetoAjax();
+     ajax.open("POST", "borrar.php",true);
+  		//cuando el objeto XMLHttpRequest cambia de estado, la función se inicia
+	  ajax.onreadystatechange=function() {
+		  //la función responseText tiene todos los datos pedidos al servidor
+	  	if (ajax.readyState==4) {
+	  		//mostrar resultados en esta capa
+			divResultado.innerHTML = ajax.responseText
+	  		//llamar a funcion para limpiar los inputs
+		}
+ 	}
+	ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	//enviando los valores a registro.php para que inserte los datos
+	ajax.send("documento="+doc);
+};
+
 //función para limpiar los campos
 function LimpiarCampos(){
   document.registro.nombre.value="";
