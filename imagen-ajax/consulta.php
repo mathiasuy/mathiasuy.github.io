@@ -43,6 +43,8 @@
     }
     echo "      </tr>";
   }
+  
+  mysql_free_result($sql);
 ?>
     </tbody>
 </table>

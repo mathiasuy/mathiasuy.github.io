@@ -17,7 +17,8 @@ mysql_select_db($bd_base, $con);
   $password=$_POST['password'];
   
 //consulta todos los empleados
-$sql=mysql_num_rows (mysql_query("SELECT * FROM Personas where documento=".$documento,$con));
+$consulta = mysql_query("SELECT * FROM Personas where documento=".$documento,$con);
+$sql=mysql_num_rows ($consulta);
 if ($sql==0){
     //registra los datos del empleados
     $sql="INSERT INTO Personas (nombre, documento, email, pass) VALUES ('$nombre', '$documento', '$email', '$password')";
@@ -30,7 +31,7 @@ if ($sql==0){
 //                            if (unlink('imagenes/'.$documento.".png"));
         
 }
-
+mysql_free_result($consulta);
 include('consulta.php');
     
 
