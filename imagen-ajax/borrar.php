@@ -1,10 +1,5 @@
 <?php
- //Configuracion de la conexion a base de datos
-    $bd_host = "localhost"; 
-    $bd_usuario = "root"; 
-    $bd_password = ""; 
-    $bd_base = "tareaphp"; 
- 
+    include 'datos.php';
     $con = mysql_connect($bd_host, $bd_usuario, $bd_password); 
     mysql_select_db($bd_base, $con); 
  
@@ -30,7 +25,7 @@
             { 
               unlink($pathimage.".png");
             }
-            echo 'Borrado exitosamente';
+            echo $documento.' borrado exitosamente';
         }
     }else{
         echo 'No se ha podido borrar el  elemento';

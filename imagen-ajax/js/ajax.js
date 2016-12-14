@@ -12,7 +12,7 @@ function objetoAjax(){
 	}
 }
  
-if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
+if (!xmlhttp && typeof XMLHttpRequest!=='undefined') {
 	  xmlhttp = new XMLHttpRequest();
 	}
 	return xmlhttp;
@@ -41,16 +41,16 @@ function enviarDatos(){
   		//cuando el objeto XMLHttpRequest cambia de estado, la función se inicia
 	  ajax.onreadystatechange=function() {
 		  //la función responseText tiene todos los datos pedidos al servidor
-	  	if (ajax.readyState==4) {
+	  	if (ajax.readyState===4) {
 	  		//mostrar resultados en esta capa
-			divResultado.innerHTML = ajax.responseText
+			divResultado.innerHTML = ajax.responseText;
 	  		//llamar a funcion para limpiar los inputs
 			LimpiarCampos();
 		}
- 	}
+ 	};
 	ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	//enviando los valores a registro.php para que inserte los datos
-	ajax.send("nombre="+nombre+"&documento="+documento+"&email="+email+"&password="+password)
+	ajax.send("nombre="+nombre+"&documento="+documento+"&email="+email+"&password="+password);
 }
  
 function del(doc){
@@ -60,12 +60,12 @@ function del(doc){
   		//cuando el objeto XMLHttpRequest cambia de estado, la función se inicia
 	  ajax.onreadystatechange=function() {
 		  //la función responseText tiene todos los datos pedidos al servidor
-	  	if (ajax.readyState==4) {
+	  	if (ajax.readyState===4) {
 	  		//mostrar resultados en esta capa
-			divResultado.innerHTML = ajax.responseText
+			divResultado.innerHTML = ajax.responseText;
 	  		//llamar a funcion para limpiar los inputs
 		}
- 	}
+ 	};
 	ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	//enviando los valores a registro.php para que inserte los datos
 	ajax.send("documento="+doc);
@@ -77,5 +77,6 @@ function LimpiarCampos(){
   document.registro.documento.value="";
   document.registro.email.value="";
   document.registro.password.value="";
-  document.registro.nombre.focus();
+  document.getElementById("image").innerHTML = "";
+  //document.registro.nombre.focus();
 };

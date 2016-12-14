@@ -21,7 +21,7 @@ $(window).load(function(){
             if (file !== null){
                 if (!file.type.match(imageType)){
                     document.getElementById('image').innerHTML = "";
-                    return;
+//                    return;
                 }              
               reader.readAsDataURL(file);
             }else{

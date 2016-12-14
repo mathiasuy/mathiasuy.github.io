@@ -27,12 +27,12 @@
      
      
      
-       <div class="container">
-        <div class="row">            
+       <div class="container" class="col s12">
+        <div class="row" class="col s12">            
           <div class="col s12">
                <div class="row">
             
-            <form  id="registro" name="registro" enctype="multipart/form-data">
+            <form  id="registro" name="registro" enctype="multipart/form-data" class="col s12">
                 <h2>Registro:</h2>
                 <label class="label label-danger invalid" for="nombre"></label>                
                 <div class="input-field">
