@@ -2,11 +2,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
 <?php
     include 'datos.php';
-    $con = mysql_connect($bd_host, $bd_usuario, $bd_password); 
-    mysql_select_db($bd_base, $con); 
-
+    $con = mysqli_connect($bd_host, $bd_usuario, $bd_password, $bd_base);
+    
     //consulta todos los empleados
-    $sql=mysql_query("SELECT * FROM Personas",$con);
+	$sql = $con->query("SELECT * FROM Personas");
+    
 ?>
 <table class="table table-bordered table-hover responsive-table">
     <thead style="background-color: cadetblue; color: white">
@@ -20,7 +20,7 @@
     </thead>
     <tbody style="background-color: grey; color: black;">
 <?php
-  while($row = mysql_fetch_array($sql)){
+  while($row = $sql->fetch_array()){
       $doc = $row["documento"];
     echo "      <tr>";
     echo "          <td><b>".$row['nombre']."</b></td>";
@@ -42,8 +42,9 @@
     echo "      </tr>";
   }
   
-  mysql_free_result($sql);
-  mysql_close($con);
+  //mysqli_free_result($sql);
+  //mysqli_close($con);
+  error_reporting(E_ALL ^ E_DEPRECATED);
 ?>
     </tbody>
 </table>
