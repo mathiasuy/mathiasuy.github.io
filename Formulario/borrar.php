@@ -1,15 +1,14 @@
 <?php
     include 'datos.php';
-    $con = mysql_connect($bd_host, $bd_usuario, $bd_password); 
-    mysql_select_db($bd_base, $con); 
- 
+    $con = mysqli_connect($bd_host, $bd_usuario, $bd_password, $bd_base); 
+     
     if(isset($_POST['documento'])) {
         //variables POST
 
         $documento=$_POST['documento'];
 
         //consulta todos los empleados
-        $query = mysql_query("DELETE FROM Personas where documento=".$documento,$con);
+        $query = $con->query("DELETE FROM Personas where documento=".$documento);
         $pathimage = "imagenes/".$documento;
         if ($query){
             if (is_file($pathimage.".jpg"))
@@ -31,5 +30,6 @@
         echo 'No se ha podido borrar el  elemento';
     }
     //mysql_free_result($query);
-    mysql_close($con);
+    //mysqli_close($con);
+	error_reporting(E_ALL ^ E_DEPRECATED);
     include('consulta.php');
