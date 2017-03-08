@@ -1,7 +1,6 @@
 <?php
     include 'datos.php';
-    $con = mysql_connect($bd_host, $bd_usuario, $bd_password); 
-    mysql_select_db($bd_base, $con); 
+    $con = mysqli_connect($bd_host, $bd_usuario, $bd_password, $bd_base);
 
 //variables POST
     $nombre=$_POST['nombre'];
@@ -10,17 +9,18 @@
     $password=$_POST['password'];
 
     //consulta todos los empleados
-    $consulta = mysql_query("SELECT * FROM Personas where documento=".$documento,$con);
-    $sql=mysql_num_rows ($consulta);
+    $consulta = $con->query("SELECT * FROM Personas where documento=".$documento);
+    $sql=mysqli_num_rows ($consulta);
     if ($sql==0){
         //registra los datos del empleados
         $sql="INSERT INTO Personas (nombre, documento, email, pass) VALUES ('$nombre', '$documento', '$email', '$password')";
-        mysql_query($sql,$con) or die('Ocurrió un error :( . '.mysql_error());
+        $con->query($sql) or die('Ocurrió un error :( . '.mysqli_error());
     }else{
         echo 'Ya existe ese documento en la base de datos';
     }
-    mysql_free_result($consulta);
-    mysql_close($con);
+    //mysqli_free_result($consulta);
+    //mysqli_close($con);
+	error_reporting(E_ALL ^ E_DEPRECATED);
     include('consulta.php');
     
 
